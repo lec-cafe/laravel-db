@@ -51,7 +51,7 @@ Route::post('/task', function (Request $request) {
  * Update Task
  */
 Route::put('/task/{id}', function (Request $request,$id) {
-    //ココで削除をする
+    //ココで更新をする
     $task = Task::find($id);
     $task->done = $request->get("tobe");
     $task->save();
