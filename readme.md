@@ -1,27 +1,18 @@
-# Laravel5.3 Basic Task List
+# Laravel5.3 Database Application Sample
 
-5.2 のドキュメントを参考に 5.3 で Basic Task List をつくりました。
+## 使い方
 
-1. ディレクトリをクローン
+````
+$ composer install 
+$ cp .env.example .env
+$ php artisan key:generate
 
-```
-git clone https://github.com/sshono1210/oic-ec.git
-```
+````
 
-2. composerをインストール
+## ブランチ
 
-```
-composer install
-```
-
-3. .env.exampleをコピーして.envファイルを作成
-
-```
-cp .env.example .env
-```
-
-4. キーの作成
-
-```
-php artisan key:generate
-```
+- master: セッションベースのタスクリスト
+- db: DBクラスを使用したタスクリスト
+- eloquent: Eloquent を使用したタスクリスト
+- repository: Repository パターン を使用したタスクリスト
+- di: Repository パターン を使用したタスクリスト
