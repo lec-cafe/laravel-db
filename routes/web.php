@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
  */
 Route::get('/', function () {
     //ココで一覧を取り出す
-    $tasks = Task::orderBy('created_at', 'asc')->get();
+    $tasks = [];
 
     return view('task', [
         'tasks' => $tasks
@@ -40,10 +40,6 @@ Route::post('/task', function (Request $request) {
     }
 
     //ココで登録処理をする
-    $task = new Task;
-    $task->name = $request->name;
-    $task->done = false;
-    $task->save();
 
     return redirect('/');
 });
@@ -52,9 +48,6 @@ Route::post('/task', function (Request $request) {
  */
 Route::put('/task/{id}', function (Request $request,$id) {
     //ココで更新をする
-    $task = Task::find($id);
-    $task->done = $request->get("tobe");
-    $task->save();
 
     return redirect('/');
 });
@@ -63,8 +56,6 @@ Route::put('/task/{id}', function (Request $request,$id) {
  */
 Route::delete('/task/{id}', function ($id) {
     //ココで削除をする
-    $task = Task::find($id);
-    $task->delete();
 
     return redirect('/');
 });
