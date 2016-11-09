@@ -53,7 +53,7 @@ Route::post('/task', function (Request $request) {
 Route::put('/task/{id}', function (Request $request,$id) {
     //ココで更新をする
     $task = Task::find($id);
-    $task->done = $request->get("tobe");
+    $task->done = $request->tobe;
     $task->save();
 
     return redirect('/');
