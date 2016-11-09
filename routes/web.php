@@ -42,6 +42,18 @@ Route::post('/task', function (Request $request) {
     //ココで登録処理をする
     $task = new Task;
     $task->name = $request->name;
+    $task->done = false;
+    $task->save();
+
+    return redirect('/');
+});
+/**
+ * Update Task
+ */
+Route::put('/task/{id}', function (Request $request,$id) {
+    //ココで削除をする
+    $task = Task::find($id);
+    $task->done = $request->get("tobe");
     $task->save();
 
     return redirect('/');
@@ -49,8 +61,9 @@ Route::post('/task', function (Request $request) {
 /**
  * Delete Task
  */
-Route::delete('/task/{task}', function (Task $task) {
+Route::delete('/task/{id}', function ($id) {
     //ココで削除をする
+    $task = Task::find($id);
     $task->delete();
 
     return redirect('/');
