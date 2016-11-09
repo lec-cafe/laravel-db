@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
  * Show Task Dashboard
  */
 Route::get('/', function () {
+    //ココで一覧を取り出す
     $tasks = Task::orderBy('created_at', 'asc')->get();
 
     return view('task', [
@@ -38,7 +39,7 @@ Route::post('/task', function (Request $request) {
             ->withErrors($validator);
     }
 
-
+    //ココで登録処理をする
     $task = new Task;
     $task->name = $request->name;
     $task->save();
@@ -49,6 +50,7 @@ Route::post('/task', function (Request $request) {
  * Delete Task
  */
 Route::delete('/task/{task}', function (Task $task) {
+    //ココで削除をする
     $task->delete();
 
     return redirect('/');
