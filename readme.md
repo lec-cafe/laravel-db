@@ -11,8 +11,31 @@ $ php artisan key:generate
 
 ## ブランチ
 
-- master: セッションベースのタスクリスト
-- db: DBクラスを使用したタスクリスト
-- eloquent: Eloquent を使用したタスクリスト
-- repository: Repository パターン を使用したタスクリスト
-- di: Repository パターン を使用したタスクリスト
+### master
+ 
+空ののタスクリスト実装
+
+### db
+ 
+DBクラスを使用したタスクリスト実装
+
+https://github.com/lec-cafe/laravel-db/compare/master...db
+
+## eloquent
+
+Eloquent を使用したタスクリスト実装
+
+https://github.com/lec-cafe/laravel-db/compare/master...eloquent
+
+## repository
+
+Repository パターン を使用したタスクリスト実装
+
+https://github.com/lec-cafe/laravel-db/compare/master...repository
+
+## di
+
+DI コンテナを使用したRepository パターンの応用実装
+
+https://github.com/lec-cafe/laravel-db/compare/master...di
+
