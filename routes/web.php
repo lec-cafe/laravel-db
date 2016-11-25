@@ -12,14 +12,13 @@
 */
 use App\Task;
 use Illuminate\Http\Request;
+use App\Repositories\TaskRepository;
 
 /**
  * Show Task Dashboard
  */
-Route::get('/', function () {
-    //ココで一覧を取り出す
-    $tasks = [];
-
+Route::get('/', function (TaskRepository $task) {
+    $tasks = $task->getTasks();
     return view('task', [
         'tasks' => $tasks
     ]);
@@ -28,7 +27,7 @@ Route::get('/', function () {
 /**
  * Add New Task
  */
-Route::post('/task', function (Request $request) {
+Route::post('/task', function (Request $request,TaskRepository $task) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:10',
     ]);
@@ -40,22 +39,22 @@ Route::post('/task', function (Request $request) {
     }
 
     //ココで登録処理をする
-
+    $task->create($request->name,0);
     return redirect('/');
 });
 /**
  * Update Task
  */
-Route::put('/task/{id}', function (Request $request,$id) {
+Route::put('/task/{id}', function (Request $request,TaskRepository $task,$id) {
     //ココで更新をする
-
+    $task->update($id,$request->tobe);
     return redirect('/');
 });
 /**
  * Delete Task
  */
-Route::delete('/task/{id}', function ($id) {
+Route::delete('/task/{id}', function (TaskRepository $task,$id) {
     //ココで削除をする
-
+    $task->delete($id);
     return redirect('/');
 });
